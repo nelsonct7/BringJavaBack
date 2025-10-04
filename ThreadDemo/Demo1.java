@@ -38,7 +38,6 @@ class ThreadB extends Thread {
 
     @Override
     public void run() {
-
         super.run();
         this.show();
     }
