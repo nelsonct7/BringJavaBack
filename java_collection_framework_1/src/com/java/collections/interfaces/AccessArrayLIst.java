@@ -47,8 +47,8 @@ public class AccessArrayLIst {
 		}
 		
 		// iterate over the array list using lambda expression, and for each method
+		fruits.stream().forEach(item->System.out.println("Array list item iteratred using foreach method "+item));
 		fruits.forEach(item->System.out.println("Array list item iteratred using foreach method "+item));
-		
 		List<String> subFruits=new ArrayList<String>();
 		subFruits.add("Banana");
 		subFruits.add("Orange");
