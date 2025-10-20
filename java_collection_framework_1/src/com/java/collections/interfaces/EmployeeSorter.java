@@ -24,45 +24,30 @@ public class EmployeeSorter implements Comparator<Employee>{
 	}
 
 	@Override
-	public int compare(Employee arg0, Employee arg1) {
-		// TODO Auto-generated method stub
-		if(this.sortOrder=="asc") {
-			switch(sortItemName) {
-			case "name":{
-				if( arg0.getName().equals(arg1.getName())) {
-					return 1;
-				}
-				return 0;	
-			}
-			case "salary":{
-				return (int) ((int)arg0.getSalary()-arg1.getSalary());
-			}
-			case "age":{
-				return arg0.getAge()-arg1.getAge();
-			}
-			default:{	
-				return arg0.getId()-arg1.getId();
-			}
-			}		
-		}else {
-			switch(sortItemName) {
-			case "name":{
-				if( arg1.getName().equals(arg0.getName())) {
-					return 1;
-				}
-				return 0;	
-			}
-			case "salary":{
-				return (int) ((int)arg1.getSalary()-arg0.getSalary());
-			}
-			case "age":{
-				return arg1.getAge()-arg0.getAge();
-			}
-			default:{	
-				return arg1.getId()-arg0.getId();
-			}
-			}
-		}
-	}
+public int compare(Employee arg0, Employee arg1) {
+    int result = 0;
+
+    switch (sortItemName) {
+        case "name":
+            result = arg0.getName().compareTo(arg1.getName());
+            break;
+        case "salary":
+            result = Double.compare(arg0.getSalary(), arg1.getSalary());
+            break;
+        case "age":
+            result = Integer.compare(arg0.getAge(), arg1.getAge());
+            break;
+        default: // assume "id"
+            result = Integer.compare(arg0.getId(), arg1.getId());
+            break;
+    }
+
+    // Reverse if descending
+    if ("desc".equals(sortOrder)) {
+        result = -result;
+    }
+
+    return result;
+}	
 
 }

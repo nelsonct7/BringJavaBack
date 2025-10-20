@@ -35,6 +35,7 @@ public class SortingArrayList {
 		System.out.println("Unsorted employee list ");
 		EmployeeSorter empSortObj=new EmployeeSorter();
 		empList.forEach(empItem->System.out.println(empItem.toString()));
+		System.out.println("======== Sort item "+empSortObj.getSortItemName()+" Sort order "+empSortObj.getSortOrder());
 		// sort by name in ascending
 		Collections.sort(empList, empSortObj);
 		System.out.println("Sorted employee list by name in asc order 	");
@@ -43,11 +44,25 @@ public class SortingArrayList {
 		empSortObj.setSortOrder("desc");
 		Collections.sort(empList, empSortObj);
 		System.out.println("Sorted employee list by name in desc order 	");
+		System.out.println("======== Sort item "+empSortObj.getSortItemName()+" Sort order "+empSortObj.getSortOrder());
 		empList.forEach(empItem->System.out.println(empItem.toString()));
-		// sort by age in asc
+		// sort by age in asc	
 		empSortObj.setSortOrder("asc");
 		empSortObj.setSortItemName("age");
+		Collections.sort(empList, empSortObj);
 		System.out.println("Sorted employee list by age in asc order 	");
+		System.out.println("======== Sort item "+empSortObj.getSortItemName()+" Sort order "+empSortObj.getSortOrder());
+		empList.forEach(empItem->System.out.println(empItem.toString()));
+		// sort by age in desc
+		empSortObj.setSortOrder("desc");
+		Collections.sort(empList, empSortObj);
+		System.out.println("Sorted employee list by age in asc order 	");
+		System.out.println("======== Sort item "+empSortObj.getSortItemName()+" Sort order "+empSortObj.getSortOrder());
+		empList.forEach(empItem->System.out.println(empItem.toString()));
+		
+		//comparator implementation using lambda function
+		Collections.sort(empList, (obj1,obj2)->(int	)(obj1.getSalary()-obj2.getSalary()));
+		System.out.println("Sorted employee list by salary using lambda expression 	with sort method in collection	");
 		empList.forEach(empItem->System.out.println(empItem.toString()));
 	}
 	
