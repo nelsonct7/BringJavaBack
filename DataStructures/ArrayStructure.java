@@ -26,8 +26,29 @@ public class ArrayStructure {
             System.out.println(
                     "The element " + target + " is found in the array at the index of [" + elementIndex + "]");
         }
+
+        System.out.println("Binary search with recursion");
+        target = 2;
+        elementIndex = -1;
+        elementIndex = ArrayStructure.binarySearchRecursion(sorted, target, 0, sorted.length - 1);
+        if (elementIndex == -1) {
+            System.out.println("The element is not found in the array as per binary search");
+        } else {
+            System.out.println(
+                    "The element " + target + " is found in the array at the index of [" + elementIndex + "]");
+        }
     }
 
+    /**
+     * linear search time complexity is O(n), if the number of elements in an array
+     * doubles in size
+     * linear search take that much time to complete the search and find the
+     * element.
+     * 
+     * @param nums
+     * @param target
+     * @return
+     */
     public static int linearSearch(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == target) {
@@ -50,6 +71,9 @@ public class ArrayStructure {
         return nums;
     }
 
+    // binary search time complexity is O(log n), if the number of elements
+    // increases to double in an array
+    // binary search take 1 more step to complete the search
     public static int binarySearch(int[] nums, int target) {
         int head = 0;
         int tail = nums.length - 1;
@@ -66,4 +90,19 @@ public class ArrayStructure {
         }
         return result;
     }
+
+    public static int binarySearchRecursion(int[] nums, int target, int left,int right){
+        if(left<=right){
+            int mid=(left+right)/2;
+            if(nums[mid]==target){
+                return nums[mid];
+            }else if(nums[mid]<target){
+                return binarySearchRecursion(nums,target,mid+1,right);
+            }else{
+                return binarySearchRecursion(nums,target,left,mid-1);
+            }
+        }
+        return -1;
+    }
+
 }
